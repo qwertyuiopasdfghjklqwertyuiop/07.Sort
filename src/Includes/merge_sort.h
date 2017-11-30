@@ -4,7 +4,6 @@
 #include <vector>
 namespace nonstd {
 
-//============================= M E R G E ======================================
   template< typename T >
   void merge_sort(std::vector<T>& vec);
 
@@ -13,23 +12,13 @@ namespace nonstd {
 
   template< typename T >
   void merge_helper(int begin1, int end1, int begin2, int end2, const std::vector<T>&orig, std::vector<T>& buffer);
-//==============================================================================
-
-  template< typename T >
-  void sort(std::vector<T>& vec)
-  {
-    merge_sort<T>(vec);
-  }
 
 //==============================================================================
-//============================= M E R G E ======================================
-//==============================================================================
+
   template< typename T >
   void merge_sort(std::vector<T>& vec)
   {
     std::vector<T> buffer;
-    //buffer.resize(vec.size());
-
       // Resize without calling default contructor
     buffer.insert( buffer.end(), vec.begin(), vec.end() );
 
@@ -40,9 +29,10 @@ namespace nonstd {
   void mergeSort(int begin, int end, std::vector<T>& orig, std::vector<T>& buffer)
   {
     int halfSize = (end - begin)/2;
+    if(halfSize == 0) return;
 
-    if(halfSize == 0)
-      return;
+    for(int k = begin; !(orig[k+1] < orig[k]); k++)
+      if(k == end-2) return;
 
     mergeSort(begin, end-halfSize, orig, buffer);
     mergeSort(end-halfSize, end, orig, buffer); 
@@ -60,7 +50,7 @@ namespace nonstd {
     // Sort into buffer
     for( ; begin1 < end1 && begin2 < end2; bufferPos++ )
     {
-      if(orig[begin1] <= orig[begin2])
+      if(!(orig[begin2] < orig[begin1]))
       {
         buffer[bufferPos] = orig[begin1];
         begin1++;
@@ -72,7 +62,7 @@ namespace nonstd {
       }
     }
 
-    // Dump whatever is left over
+    // Dump whatever is left over.  Only one loop should run.
     while(begin1 < end1)
     {
       buffer[bufferPos] = orig[begin1];
@@ -85,10 +75,8 @@ namespace nonstd {
       bufferPos++;
       begin2++;
     }
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   }
-//==============================================================================
-//==============================================================================
-//==============================================================================
 
 }
 

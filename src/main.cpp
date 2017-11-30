@@ -1,5 +1,6 @@
 #include <iostream>
 #include "./Includes/quick_sort.h"
+#include "./Includes/merge_sort.h"
 
 template< typename T >
 struct wrapper {
@@ -17,9 +18,9 @@ int main() {
   std::vector<wrapper<int>> test;
 
   for(int k = 0; k < SIZE; k++)
-    test.push_back(wrapper<int>(rand() % 10));
+    test.push_back(wrapper<int>(rand() % 10000000));
 
-  nonstd::quick_sort(test);
+  nonstd::merge_sort(test);
 
   int numWrong = 0;
   for(int k = 0; k < SIZE-1; k++)
