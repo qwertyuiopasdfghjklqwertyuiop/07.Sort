@@ -30,14 +30,13 @@ namespace nonstd {
     for(int k=begin; ! (vec[k+1]<vec[k]); k++)
       if(k == end-2) return;
 
-    T& pivot( vec[(end-begin)/2 + begin] );  //Placeholder
-
+    T pivot( vec[rand() % (end-begin) + begin] );
     // Pivot is median of begin, end, and middle between them
     if((vec[begin] < vec[end-1]) != (vec[begin] < vec[(end-begin)/2 + begin]))
       pivot = vec[begin];
     else if((vec[(end-begin)/2 + begin] < vec[begin]) != (vec[(end-begin)/2 + begin] < vec[end-1]))
       pivot = vec[(end-begin)/2 +begin];
-    else
+    else if((vec[end-1] < vec[begin]) != (vec[end-1] < vec[(end-begin)/2 + begin]))
       pivot = vec[end-1];
 
 
@@ -55,8 +54,8 @@ namespace nonstd {
         ePoint--;
       }
     }
-    quick_sort( vec, begin, ePoint );
-    quick_sort( vec, ePoint-1, end );
+    quick_sort( vec, begin, ePoint+1 );
+    quick_sort( vec, ePoint, end );
   }
 
 }

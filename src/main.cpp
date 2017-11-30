@@ -13,7 +13,7 @@ struct wrapper {
 
 int main() {
   srand( time(NULL) );
-  const int SIZE = 10000;
+  const int SIZE = 10000000;
   std::vector<wrapper<int>> test;
 
   for(int k = 0; k < SIZE; k++)
@@ -21,9 +21,11 @@ int main() {
 
   nonstd::quick_sort(test);
 
+  int numWrong = 0;
   for(int k = 0; k < SIZE-1; k++)
     if(test[k] > test[k+1])
-      std::cout << "NO"  << std::endl;
+      numWrong++;
+  std::cout << "Num Wrong: " << numWrong << std::endl;
 
 
   return 0;
