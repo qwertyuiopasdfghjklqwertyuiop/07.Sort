@@ -13,11 +13,11 @@ struct wrapper {
 
 int main() {
   srand( time(NULL) );
-  const int SIZE = 1*1000*1000;
+  const int SIZE = 10000;
   std::vector<wrapper<int>> test;
 
   for(int k = 0; k < SIZE; k++)
-    test.push_back(wrapper<int>(rand() % 100000));
+    test.push_back(wrapper<int>(rand() % 10));
 
   nonstd::quick_sort(test);
 

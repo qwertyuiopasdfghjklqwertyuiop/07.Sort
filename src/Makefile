@@ -4,7 +4,7 @@ TARGET=build
 
 all: $(TARGET)
 
-debug: CFLAGS+= -g
+debug: CFLAGS+= -g -fsanitize=address
 debug: $(TARGET)
 
 $(TARGET):
