@@ -4,11 +4,11 @@ TARGET=build
 
 all: $(TARGET)
 
-debug: CFLAGS+= -g -fsanitize=memory
+debug: CFLAGS+= -g
 debug: $(TARGET)
 
 $(TARGET):
-	$(CC) $(CFLAGS) *.cpp -o $(TARGET)
+	$(CC) $(CFLAGS) main.cpp -o $(TARGET)
 
 clean:
 	$(RM) $(TARGET)

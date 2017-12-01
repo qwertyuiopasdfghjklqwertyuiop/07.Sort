@@ -20,7 +20,7 @@ int main() {
   for(int k = 0; k < SIZE; k++)
     test.push_back(wrapper<int>(rand() % 10000000));
 
-  nonstd::merge_sort(test);
+  nonstd::quick_sort(test);
 
   int numWrong = 0;
   for(int k = 0; k < SIZE-1; k++)
